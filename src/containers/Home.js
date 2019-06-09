@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import getProductsStats from '../utils/api'
+import getProducts from '../utils/api'
+import Product from '../components/Product'
 
 const Home = () => {
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    getProductsStats(setProducts)
+    getProducts(setProducts)
   }, [])
 
   return (
     <View style={styles.container}>
-      {products.map(p => (
-        <Text key={p.id}>
-          {p.id} - ${p.stats && p.stats.high}
-        </Text>
-      ))}
+      {products.length ?
+        products.map(product => <Product key={product.id} {...product} />) :
+        <Text>Loading...</Text>
+      }
     </View>
   );
 }
@@ -26,9 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  stats: {
-    marginTop: 20,
   }
 })
 
