@@ -1,21 +1,18 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, ScrollView } from 'react-native'
 import Home from './src/containers/Home'
 
 const App = () => {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Home />
-    </View>
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#00a8ff',
   }
 })
 

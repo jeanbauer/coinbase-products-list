@@ -4,9 +4,12 @@ import { StyleSheet, Text, View } from 'react-native'
 const Product = ({ id, stats = {} }) => {
   return (
     <View style={styles.container}>
-      <Text>{id}</Text>
+      <View style={styles.title}>
+        <Text style={styles.title}>{id}</Text>
+      </View>
+
       {stats.volume_30day ?
-        <View>
+        <View style={styles.content}>
           <Text>High: {stats.high}</Text>
           <Text>Last: {stats.last}</Text>
           <Text>Low: {stats.low}</Text>
@@ -15,7 +18,7 @@ const Product = ({ id, stats = {} }) => {
           <Text>Volume_30day: {stats.volume_30day}</Text>
         </View>
         :
-        <View>
+        <View style={styles.title}>
           <Text>Loading...</Text>
         </View>
       }
@@ -25,8 +28,23 @@ const Product = ({ id, stats = {} }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#FFF',
+    alignSelf: 'stretch',
+    borderRadius: 10,
+    textAlign: 'center',
+    margin: 30,
+    marginBottom: 0,
+    padding: 30,
+    flex: 1,
+  },
+  title: {
+    flex: 1,
+    fontSize: 20,
+    textAlign: 'center',
+    fontWeight: '100',
+  },
+  content: {
+    flex: 2,
   }
 })
 
